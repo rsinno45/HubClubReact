@@ -68,6 +68,9 @@ const MembershipPage = () => {
     { name: "Professional Services", category: "Additional Services" },
     { name: "Website Services", category: "Digital Services" },
     { name: "Social Media Services", category: "Digital Services" },
+    { name: "GLC Meetings", category: "Additional Services" },
+    { name: "PCOs Contacts", category: "Additional Services" },
+    { name: "SBS Contacts", category: "Additional Services" },
   ];
 
   const titleColors = {
@@ -190,7 +193,6 @@ const MembershipPage = () => {
         "Website Services": "N/A",
         "Social Media Services": "N/A",
         "GLC Meetings": "10 Events",
-        "PCOs Contacts": "50 Contacts",
         "PCOs Contacts": "10 Contacts",
         "SBS Contacts": "10 Contacts",
       },
