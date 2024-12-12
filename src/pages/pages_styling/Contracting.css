@@ -1,0 +1,20 @@
+.contract-section {
+  padding: 40px;
+}
+
+/* This can stay */
+.bg-blue-500 {
+  background-color: #2584f6;
+}
+
+/* Remove #ImgCard completely since we're not using it */
+
+/* Move the hover effect to the wrapper instead of .Card */
+.image-wrapper {
+  transition: all 0.3s ease-in-out;
+}
+
+.image-wrapper:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}

@@ -1,0 +1,98 @@
+.navbar {
+  padding: 10px 0;
+  transition: all 0.3s ease;
+  position: sticky;
+  width: 100%;
+  top: 0;
+  z-index: 999;
+  background-color: white;
+  opacity: 0.932357;
+}
+
+.navbar-brand img {
+  height: 50px;
+  width: auto;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.navbar.navbar-sticky {
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.container-fluid {
+  max-width: 100%;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.navbar-nav {
+  margin-left: auto;
+  gap: 1rem;
+}
+
+.navbar-nav .nav-link {
+  color: #333;
+  font-weight: 500;
+  font-size: 16px;
+  padding: 15px;
+  transition: color 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+  color: #0056b3;
+}
+
+/* Social Media Icons */
+.nav-item .fab {
+  font-size: 20px;
+}
+
+/* Mobile Menu Button */
+.navbar-toggler {
+  border: none;
+  padding: 0;
+}
+
+.hc-nav-trigger span,
+.hc-nav-trigger span::before,
+.hc-nav-trigger span::after {
+  display: block;
+  width: 25px;
+  height: 2px;
+  background: #333;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+/* Mobile Menu */
+@media (max-width: 1199.98px) {
+  .offcanvas {
+    width: 300px;
+  }
+
+  .navbar-nav {
+    padding: 20px 0;
+    gap: 0;
+  }
+
+  .nav-item {
+    padding: 5px 20px;
+  }
+
+  .nav-link {
+    padding: 10px 0;
+  }
+}
+
+/* Ensure proper spacing on very large screens */
+@media (min-width: 1400px) {
+  .container-fluid {
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+}

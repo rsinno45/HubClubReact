@@ -1,0 +1,144 @@
+.footer {
+  width: 100%;
+  background-color: #e0e0e0;
+  font-family: Arial, sans-serif;
+}
+
+.footer-main {
+  padding: 40px 0;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.footer-column {
+  flex: 1;
+}
+
+.footer-title {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Company Info Styles */
+.company-info {
+  text-align: left;
+}
+
+.info-text p {
+  margin-bottom: 8px;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.credit-cards {
+  margin-top: 20px;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+/* Contact Info Styles */
+.contact-details p {
+  margin-bottom: 15px;
+  display: flex;
+  align-items: flex-start;
+  font-size: 14px;
+}
+
+.contact-details i {
+  width: 20px;
+  margin-right: 10px;
+  color: #333;
+}
+
+.contact-details a {
+  color: #333;
+  text-decoration: none;
+}
+
+/* NAICS Codes Styles */
+.naics-grid {
+  display: flex;
+  gap: 30px;
+}
+
+.naics-group p {
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+/* Footer Copyright */
+.footer-copyright {
+  padding: 20px 0;
+  border-top: 1px solid #ccc;
+}
+
+.copyright-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-logos {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.hub-logo {
+  height: 40px;
+  width: auto;
+}
+
+.sba-logo {
+  height: 30px;
+  width: auto;
+  opacity: 0.7;
+}
+
+/* Container Styles */
+.container-fluid {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .footer-content {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .naics-grid {
+    justify-content: space-between;
+  }
+}
+
+@media (max-width: 768px) {
+  .copyright-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+  }
+
+  .footer-logos {
+    flex-direction: column;
+  }
+
+  .naics-grid {
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .naics-group {
+    flex: 1 1 45%;
+  }
+}
