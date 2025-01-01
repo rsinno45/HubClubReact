@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Check, X } from "lucide-react";
+import PDFViewerModal from "./ContractFormModal";
 
 const MembershipPage = () => {
   // Toggle for mobile view detail expansion
@@ -11,36 +12,42 @@ const MembershipPage = () => {
       color: "purple-600",
       price: "50,000",
       type: "Premium Memberships",
+      link: "https://square.link/u/EksgGU0f",
     },
     {
       name: "Platinum",
       color: "blue-600",
       price: "25,000",
       type: "Premium Memberships",
+      link: "https://square.link/u/K8KJBwQC",
     },
     {
       name: "Gold",
       color: "amber-500",
       price: "10,000",
       type: "Premium Memberships",
+      link: "https://square.link/u/Qp9DsXPh",
     },
     {
       name: "Silver",
       color: "gray-400",
       price: "5,000",
       type: "Event Memberships",
+      link: "https://square.link/u/yLeDhJP1",
     },
     {
       name: "Bronze",
       color: "red-700",
       price: "3,000",
       type: "Event Memberships",
+      link: "https://square.link/u/k3ymjHWV",
     },
     {
       name: "Associate",
       color: "gray-600",
       price: "1,000",
       type: "Event Memberships",
+      link: "https://square.link/u/1EErxdYg",
     },
   ];
 
@@ -53,24 +60,31 @@ const MembershipPage = () => {
     { name: "Sam Annual Assistance", category: "Core Features" },
     { name: "HUBZone Renewal Assistance", category: "Core Features" },
     { name: "DSVCB Renewal Assistance", category: "Core Features" },
-    { name: "SBS Marketing", category: "Marketing Services" },
-    { name: "PCO Marketing", category: "Marketing Services" },
-    { name: "Direct Mail", category: "Marketing Services" },
-    { name: "MBE/WBE Certification", category: "Certifications" },
-    { name: "DBE Certification", category: "Certifications" },
-    { name: "Federal Certifications", category: "Certifications" },
-    { name: "Real Estate Analysis", category: "Additional Services" },
+    { name: "MBE/WBE Certification¹", category: "Certifications" },
+    { name: "DBE Certification¹", category: "Certifications" },
+    { name: "Federal Certifications¹", category: "Certifications" },
+    { name: "State Certifications¹", category: "Certifications" },
     { name: "Capability Statements", category: "Marketing Materials" },
     { name: "Marketing Materials", category: "Marketing Materials" },
-    { name: "Meet Small Business Specialist (SBS) Events", category: "Events" },
-    { name: "SBS One on One Meetings", category: "Events" },
-    { name: "State Certifications", category: "Certifications" },
-    { name: "Professional Services", category: "Additional Services" },
-    { name: "Website Services", category: "Digital Services" },
-    { name: "Social Media Services", category: "Digital Services" },
-    { name: "GLC Meetings", category: "Additional Services" },
-    { name: "PCOs Contacts", category: "Additional Services" },
-    { name: "SBS Contacts", category: "Additional Services" },
+    {
+      name: "Meet Small Business Specialist (SBS) Events²",
+      category: "Events",
+    },
+    { name: "SBS One on One Meetings²", category: "Events" },
+    { name: "Professional Services³", category: "Additional Services" },
+    { name: "Workforce Development⁴", category: "Additional Services" },
+    { name: "Business Development⁴", category: "Additional Services" },
+    { name: "Business Planning⁴", category: "Additional Services" },
+    { name: "Business Analytics⁴", category: "Additional Services" },
+    { name: "F.A.R. Training⁴", category: "Additional Services" },
+    { name: "Real Estate Analysis⁴", category: "Additional Services" },
+    { name: "Social Media Services⁵", category: "Digital Services" },
+    { name: "SBS Marketing⁵", category: "Marketing Services" },
+    { name: "PCO Marketing⁵", category: "Marketing Services" },
+    { name: "Direct Mail⁶", category: "Marketing Services" },
+    { name: "Website Services⁷", category: "Digital Services" },
+    { name: "RST Cloud Services⁷", category: "Additional Services" },
+    { name: "Business Financing⁸", category: "Additional Services" },
   ];
 
   const titleColors = {
@@ -96,24 +110,28 @@ const MembershipPage = () => {
         "Sam Annual Assistance": true,
         "HUBZone Renewal Assistance": true,
         "DSVCB Renewal Assistance": true,
-        "SBS Marketing": true,
-        "PCO Marketing": true,
-        "Direct Mail": "Discount Available",
-        "MBE/WBE Certification": true,
-        "DBE Certification": true,
-        "Federal Certifications": true,
-        "Real Estate Analysis": true,
+        "MBE/WBE Certification¹": true,
+        "DBE Certification¹": true,
+        "Federal Certifications¹": true,
+        "State Certifications¹": true,
         "Capability Statements": true,
         "Marketing Materials": true,
-        "Meet Small Business Specialist (SBS) Events": "Unlimited",
-        "SBS One on One Meetings": "Unlimited",
-        "State Certifications": "$1,000",
-        "Professional Services": "Discounted Rates Applied",
-        "Website Services": "Discount Available",
-        "Social Media Services": "Discount Available",
-        "GLC Meetings": "Unlimited",
-        "PCOs Contacts": "50 Contacts",
-        "SBS Contacts": "50 Contacts",
+        "Meet Small Business Specialist (SBS) Events²": "Unlimited",
+        "SBS One on One Meetings²": "Unlimited",
+        "Professional Services³": true,
+        "Workforce Development⁴": true,
+        "Business Development⁴": true,
+        "Business Planning⁴": true,
+        "Business Analytics⁴": true,
+        "F.A.R. Training⁴": true,
+        "Real Estate Analysis⁴": true,
+        "Social Media Services⁵": true,
+        "SBS Marketing⁵": true,
+        "PCO Marketing⁵": true,
+        "Direct Mail⁶": true,
+        "Website Services⁷": true,
+        "RST Cloud Services⁷": true,
+        "Business Financing⁸": true,
       },
       Platinum: {
         "Sam Registration": true,
@@ -123,24 +141,28 @@ const MembershipPage = () => {
         "Sam Annual Assistance": true,
         "HUBZone Renewal Assistance": true,
         "DSVCB Renewal Assistance": true,
-        "SBS Marketing": true,
-        "PCO Marketing": true,
-        "Direct Mail": "Discount Available",
-        "MBE/WBE Certification": "$5,000",
-        "DBE Certification": "$5,000",
-        "Federal Certifications": "$5,000",
-        "Real Estate Analysis": true,
+        "MBE/WBE Certification¹": "Discount",
+        "DBE Certification¹": "RFP*",
+        "Federal Certifications¹": "RFP*",
+        "State Certifications¹": "RFP*",
         "Capability Statements": true,
         "Marketing Materials": true,
-        "Meet Small Business Specialist (SBS) Events": "20 Events",
-        "SBS One on One Meetings": "20 Meetings",
-        "State Certifications": "$5,000",
-        "Professional Services": "Discounted Rates Applied",
-        "Website Services": "Discount Available",
-        "Social Media Services": "Discount Available",
-        "GLC Meetings": "20 Events",
-        "PCOs Contacts": "30 Contacts",
-        "SBS Contacts": "30 Contacts",
+        "Meet Small Business Specialist (SBS) Events²": "20",
+        "SBS One on One Meetings²": "20",
+        "Professional Services³": "Discount",
+        "Workforce Development⁴": "Discount",
+        "Business Development⁴": "Discount",
+        "Business Planning⁴": "Discount",
+        "Business Analytics⁴": "Discount",
+        "F.A.R. Training⁴": "Discount",
+        "Real Estate Analysis⁴": "Discount",
+        "Social Media Services⁵": "Discount",
+        "SBS Marketing⁵": "Discount",
+        "PCO Marketing⁵": "Discount",
+        "Direct Mail⁶": "Discount",
+        "Website Services⁷": "Discount",
+        "RST Cloud Services⁷": "Discount",
+        "Business Financing⁸": "RFP*",
       },
       Gold: {
         "Sam Registration": true,
@@ -150,110 +172,138 @@ const MembershipPage = () => {
         "Sam Annual Assistance": true,
         "HUBZone Renewal Assistance": true,
         "DSVCB Renewal Assistance": true,
-        "SBS Marketing": true,
-        "PCO Marketing": true,
-        "Direct Mail": "Request for Pricing",
-        "MBE/WBE Certification": "$10,000",
-        "DBE Certification": "$10,000",
-        "Federal Certifications": "$10,000",
-        "Real Estate Analysis": "$175/hr",
-        "Capability Statements": "$300",
-        "Marketing Materials": "$500",
-        "Meet Small Business Specialist (SBS) Events": "15 Events",
-        "SBS One on One Meetings": "15 Meetings",
-        "State Certifications": "$10,000",
-        "Professional Services": "Request for Pricing",
-        "Website Services": "Request for Pricing",
-        "Social Media Services": "Request for Pricing",
-        "GLC Meetings": "15 Events",
-        "PCOs Contacts": "20 Contacts",
-        "SBS Contacts": "20 Contacts",
+        "MBE/WBE Certification¹": "RFP*",
+        "DBE Certification¹": "RFP*",
+        "Federal Certifications¹": "RFP*",
+        "State Certifications¹": "RFP*",
+        "Capability Statements": "RFP*",
+        "Marketing Materials": "RFP*",
+        "Meet Small Business Specialist (SBS) Events²": "RFP*",
+        "SBS One on One Meetings²": "RFP*",
+        "Professional Services³": "RFP*",
+        "Workforce Development⁴": "RFP*",
+        "Business Development⁴": "RFP*",
+        "Business Planning⁴": "RFP*",
+        "Business Analytics⁴": "RFP*",
+        "F.A.R. Training⁴": "RFP*",
+        "Real Estate Analysis⁴": "RFP*",
+        "Social Media Services⁵": "RFP*",
+        "SBS Marketing⁵": "RFP*",
+        "PCO Marketing⁵": "RFP*",
+        "Direct Mail⁶": "RFP*",
+        "Website Services⁷": "RFP*",
+        "RST Cloud Services⁷": "RFP*",
+        "Business Financing⁸": "RFP*",
       },
       Silver: {
-        "Sam Registration": true,
-        "HUBZone Assistance": "Request for Pricing",
-        "DSVCB Assistance": "Request for Pricing",
-        "8a Assistance": "Request for Pricing",
-        "Sam Annual Assistance": "Request for Pricing",
-        "HUBZone Renewal Assistance": "Request for Pricing",
-        "DSVCB Renewal Assistance": "Request for Pricing",
-        "SBS Marketing": "Limited",
-        "PCO Marketing": "Limited",
-        "Direct Mail": "Request for Pricing",
-        "MBE/WBE Certification": "Request for Pricing",
-        "DBE Certification": "Request for Pricing",
-        "Federal Certifications": "Request for Pricing",
-        "Real Estate Analysis": "N/A",
+        "Sam Registration": "RFP*",
+        "HUBZone Assistance": "RFP*",
+        "DSVCB Assistance": "RFP*",
+        "8a Assistance": "RFP*",
+        "Sam Annual Assistance": "RFP*",
+        "HUBZone Renewal Assistance": "RFP*",
+        "DSVCB Renewal Assistance": "RFP*",
+        "MBE/WBE Certification¹": "RFP*",
+        "DBE Certification¹": "RFP*",
+        "Federal Certifications¹": "RFP*",
+        "State Certifications¹": "RFP*",
         "Capability Statements": "$500",
-        "Marketing Materials": "$500",
-        "Meet Small Business Specialist (SBS) Events": "10 Events",
-        "SBS One on One Meetings": "10 Meetings",
-        "State Certifications": "$10,000",
-        "Professional Services": "Request for Pricing",
-        "Website Services": "N/A",
-        "Social Media Services": "N/A",
-        "GLC Meetings": "10 Events",
-        "PCOs Contacts": "10 Contacts",
-        "SBS Contacts": "10 Contacts",
+        "Marketing Materials": "$1,000",
+        "Meet Small Business Specialist (SBS) Events²": "10",
+        "SBS One on One Meetings²": "15",
+        "Professional Services³": "RFP*",
+        "Workforce Development⁴": "RFP*",
+        "Business Development⁴": "RFP*",
+        "Business Planning⁴": "RFP*",
+        "Business Analytics⁴": "N/A",
+        "F.A.R. Training⁴": "N/A",
+        "Real Estate Analysis⁴": "N/A",
+        "Social Media Services⁵": "N/A",
+        "SBS Marketing⁵": "N/A",
+        "PCO Marketing⁵": "N/A",
+        "Direct Mail⁶": "N/A",
+        "Website Services⁷": "N/A",
+        "RST Cloud Services⁷": "N/A",
+        "Business Financing⁸": "N/A",
       },
       Bronze: {
-        "Sam Registration": true,
-        "HUBZone Assistance": "Request for Pricing",
-        "DSVCB Assistance": "Request for Pricing",
-        "8a Assistance": "Request for Pricing",
-        "Sam Annual Assistance": "Request for Pricing",
-        "HUBZone Renewal Assistance": "Request for Pricing",
-        "DSVCB Renewal Assistance": "Request for Pricing",
-        "SBS Marketing": "Limited",
-        "PCO Marketing": "Limited",
-        "Direct Mail": "N/A",
-        "MBE/WBE Certification": "N/A",
-        "DBE Certification": "N/A",
-        "Federal Certifications": "N/A",
-        "Real Estate Analysis": "N/A",
+        "Sam Registration": "RFP*",
+        "HUBZone Assistance": "RFP*",
+        "DSVCB Assistance": "RFP*",
+        "8a Assistance": "RFP*",
+        "Sam Annual Assistance": "RFP*",
+        "HUBZone Renewal Assistance": "RFP*",
+        "DSVCB Renewal Assistance": "RFP*",
+        "MBE/WBE Certification¹": "RFP*",
+        "DBE Certification¹": "RFP*",
+        "Federal Certifications¹": "RFP*",
+        "State Certifications¹": "RFP*",
         "Capability Statements": "N/A",
-        "Marketing Materials": "$1,000",
-        "Meet Small Business Specialist (SBS) Events": "5 Events",
-        "SBS One on One Meetings": "5 Meetings",
-        "State Certifications": "$10,000",
-        "Professional Services": "Request for Pricing",
-        "Website Services": "N/A",
-        "Social Media Services": "N/A",
-        "GLC Meetings": "5 Events",
-        "PCOs Contacts": "N/A",
-        "SBS Contacts": "N/A",
+        "Marketing Materials": "N/A",
+        "Meet Small Business Specialist (SBS) Events²": "5",
+        "SBS One on One Meetings²": "10",
+        "Professional Services³": "N/A",
+        "Workforce Development⁴": "N/A",
+        "Business Development⁴": "N/A",
+        "Business Planning⁴": "N/A",
+        "Business Analytics⁴": "N/A",
+        "F.A.R. Training⁴": "N/A",
+        "Real Estate Analysis⁴": "N/A",
+        "Social Media Services⁵": "N/A",
+        "SBS Marketing⁵": "N/A",
+        "PCO Marketing⁵": "N/A",
+        "Direct Mail⁶": "N/A",
+        "Website Services⁷": "N/A",
+        "RST Cloud Services⁷": "N/A",
+        "Business Financing⁸": "N/A",
       },
       Associate: {
-        "Sam Registration": true,
-        "HUBZone Assistance": "N/A",
-        "DSVCB Assistance": "N/A",
-        "8a Assistance": "N/A",
+        "Sam Registration": "RFP*",
+        "HUBZone Assistance": "RFP*",
+        "DSVCB Assistance": "RFP*",
+        "8a Assistance": "RFP*",
         "Sam Annual Assistance": "N/A",
         "HUBZone Renewal Assistance": "N/A",
         "DSVCB Renewal Assistance": "N/A",
-        "SBS Marketing": "Limited",
-        "PCO Marketing": "Limited",
-        "Direct Mail": "N/A",
-        "MBE/WBE Certification": "N/A",
-        "DBE Certification": "N/A",
-        "Federal Certifications": "N/A",
-        "Real Estate Analysis": "N/A",
+        "MBE/WBE Certification¹": "N/A",
+        "DBE Certification¹": "N/A",
+        "Federal Certifications¹": "N/A",
+        "State Certifications¹": "N/A",
         "Capability Statements": "N/A",
         "Marketing Materials": "N/A",
-        "Meet Small Business Specialist (SBS) Events": "Per Request",
-        "SBS One on One Meetings": "Per Request",
-        "State Certifications": "N/A",
-        "Professional Services": "N/A",
-        "Website Services": "N/A",
-        "Social Media Services": "N/A",
-        "GLC Meetings": "Per Request",
-        "PCOs Contacts": "N/A",
-        "SBS Contacts": "N/A",
+        "Meet Small Business Specialist (SBS) Events²": "Per Request",
+        "SBS One on One Meetings²": "5",
+        "Professional Services³": "N/A",
+        "Workforce Development⁴": "N/A",
+        "Business Development⁴": "N/A",
+        "Business Planning⁴": "N/A",
+        "Business Analytics⁴": "N/A",
+        "F.A.R. Training⁴": "N/A",
+        "Real Estate Analysis⁴": "N/A",
+        "Social Media Services⁵": "N/A",
+        "SBS Marketing⁵": "N/A",
+        "PCO Marketing⁵": "N/A",
+        "Direct Mail⁶": "N/A",
+        "Website Services⁷": "N/A",
+        "RST Cloud Services⁷": "N/A",
+        "Business Financing⁸": "N/A",
       },
     };
 
     return values[plan.name]?.[feature.name] || "N/A";
   };
+
+  const footnotes = [
+    "RFP* - Request for Pricing.",
+    "¹ Enterprise Membership includes Local and State Certifications.",
+    "² Events and SBS Meetings are One on ONE meetings with Small Business Liaisons, Small Business Specialist and Small Business Program Officials throughout the fiscal year (30 minimum meetings).",
+    "³ Professional Services are for Members only including basic Accounting and Legal Services.",
+    "⁴ Business Development services also include supply chain, private sector business growth and federal research.",
+    "⁵ Marketing Services includes weekly contact with Procurement Contracting Officers, Government Purchasing Card Holders and Private Sector Industries.",
+    "⁶ Direct Mail for governmental, wholesale and retail opportunities at a discount.",
+    "⁷ IT services are available to HUB Club™ Members that include website analysis, federal regulations concerning websites, and Cloud storage is available.",
+    "⁸ Business Financing is available to HUB Club™ Members through Conventional Funding, Grants, NMTCs and OZFs.",
+  ];
 
   return (
     <div className="w-full min-h-screen bg-gradient-to-b from-gray-50 to-white py-16">
@@ -318,26 +368,10 @@ const MembershipPage = () => {
                   ))}
                 </React.Fragment>
               ))}
-              {/* Join Now Button Row */}
-              <div className="bg-white p-6 border-t">
-                <span className="text-sm text-gray-700"></span>
-              </div>
-              {plans.map((plan) => (
-                <div
-                  key={`button-${plan.name}`}
-                  className="bg-white p-6 border-t text-center"
-                >
-                  <a
-                    href={`/join/${plan.name.toLowerCase()}`}
-                    style={{ textDecoration: "none" }}
-                    className="inline-block px-6 py-2 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700 transition-colors duration-200 shadow-md"
-                  >
-                    Join Now!
-                  </a>
-                </div>
-              ))}
             </div>
           </div>
+          {/* Join Now Button Row */}
+          <PDFViewerModal />
         </div>
 
         {/* Mobile/Tablet View */}
@@ -368,7 +402,8 @@ const MembershipPage = () => {
                     {expandedTier === plan.name ? "Show Less" : "View Details"}
                   </button>
                   <a
-                    href={`/join/${plan.name.toLowerCase()}`}
+                    href={plan.link}
+                    target="_blank"
                     style={{ textDecoration: "none" }}
                     className="w-full bg-blue-600 text-white py-2 rounded-lg text-center font-semibold hover:bg-blue-700 transition-colors duration-200 shadow-md"
                   >
@@ -403,6 +438,18 @@ const MembershipPage = () => {
               )}
             </div>
           ))}
+        </div>
+
+        {/* Add Footnotes Section */}
+        <div className="mt-12 bg-white rounded-xl shadow-lg p-6">
+          <h3 className="text-lg font-semibold text-gray-900 mb-4">Notes</h3>
+          <div className="space-y-2">
+            {footnotes.map((note, index) => (
+              <p key={index} className="text-sm text-gray-600">
+                {note}
+              </p>
+            ))}
+          </div>
         </div>
       </div>
     </div>

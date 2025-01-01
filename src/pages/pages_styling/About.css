@@ -232,3 +232,12 @@
     opacity: 1;
   }
 }
+
+#EventsTitle h1,
+h2 {
+  margin-right: 2rem;
+}
+
+#EventsTitle h1 {
+  font-size: 7rem;
+}
