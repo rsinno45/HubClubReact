@@ -1,4 +1,2 @@
-[
-functions
-]
-  directory = "functions"
+[functions]
+directory = "functions"
