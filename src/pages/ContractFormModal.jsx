@@ -116,17 +116,17 @@ const PDFViewerModal = ({ planName, planPrice }) => {
 
                   {plans.map((plan) => (
                     <label
-                      key={plan.name}
+                      key={plans.name}
                       className="inline-flex items-center px-5"
                     >
                       <input
                         type="radio"
                         name="plan"
-                        value={plan.name}
+                        value={plans.name}
                         required
                       />
                       <span className="ml-2 ">
-                        {plans.name} - ${plans.price}
+                        {plan.name} - ${plan.price}
                       </span>
                     </label>
                   ))}
