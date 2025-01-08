@@ -46,7 +46,6 @@ export const handler = async (event) => {
       ? data.localCertifications.join(", ")
       : data.localCertifications || "None";
 
-    // Email to admin
     const adminEmail = {
       from: "Hub Club Chicago <info@hubclubchicago.com>",
       to: "victor@hubclubchicago.com",
