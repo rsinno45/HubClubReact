@@ -51,8 +51,8 @@ exports.handler = async (event, context) => {
     }),
     attachment: [
       {
-        filename: "HubClub_Additional_Documents.pdf",
-        data: Buffer.from("path/to/your/document.pdf"), // You'll need to handle file loading
+        filename: "HubClubApp.pdf",
+        data: require("fs").readFileSync("./documents/HubClubApp.pdf"),
       },
     ],
   };
