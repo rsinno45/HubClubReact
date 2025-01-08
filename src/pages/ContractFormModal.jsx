@@ -4,10 +4,10 @@ import { pdfjs } from "react-pdf";
 import { PDFDocument } from "pdf-lib";
 import Contract from "./PDF/APp.pdf";
 
-const PDFViewerModal = ({ planName, planPrice }) => {
+const PDFViewerModal = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [isOpenCon, setIsOpenCon] = useState(false);
-  const [pdf, setPdf] = useState(null);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null);
 
   const plans = [
     {
@@ -54,29 +54,49 @@ const PDFViewerModal = ({ planName, planPrice }) => {
     },
   ];
 
-  const generatePdf = async () => {
-    const pdfDoc = await PDFDocument.create();
-    const page = pdfDoc.addPage();
-    page.drawText("This is a sample contract.", { x: 100, y: 100 });
-    const pdfBytes = await pdfDoc.save();
-    setPdf(pdfBytes);
-  };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setSubmitting(true);
 
-  const fillOutPdf = async () => {
-    const pdfDoc = await PDFDocument.load(pdf);
-    const form = pdfDoc.getForm();
-    form.getField("name").setText("John Doe");
-    const filledPdfBytes = await pdfDoc.save();
-    // Save the filled-out PDF to your server or database
+    // Get form data
+    const formData = new FormData(e.target);
+
+    try {
+      // Submit to Netlify Forms
+      const response = await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams(formData).toString(),
+      });
+
+      if (!response.ok) throw new Error("Form submission failed");
+
+      // If successful, trigger the Netlify function to send emails
+      const functionResponse = await fetch("/.netlify/functions/submit-form", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(Object.fromEntries(formData)),
+      });
+
+      if (!functionResponse.ok) throw new Error("Email sending failed");
+
+      setSubmitStatus("success");
+      e.target.reset();
+      setTimeout(() => setIsOpen(false), 2000);
+    } catch (error) {
+      console.error("Submission error:", error);
+      setSubmitStatus("error");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
     <>
       <div className="flex items-center justify-center py-5">
-        {" "}
         <button
           onClick={() => setIsOpen(true)}
-          className="inline-block px-6 py-2 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700 transition-colors duration-200 shadow-md "
+          className="inline-block px-6 py-2 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700 transition-colors duration-200 shadow-md"
         >
           Join Now!
         </button>
@@ -84,7 +104,7 @@ const PDFViewerModal = ({ planName, planPrice }) => {
 
       {isOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-          <div className="bg-white rounded-lg w-full max-w-4xl max-h-[90vh] overflow-y-auto relative ">
+          <div className="bg-white rounded-lg w-full max-w-4xl max-h-[90vh] overflow-y-auto relative">
             <button
               onClick={() => setIsOpen(false)}
               className="absolute right-4 top-4 text-gray-500 hover:text-gray-700 z-10"
@@ -95,13 +115,24 @@ const PDFViewerModal = ({ planName, planPrice }) => {
             <div className="p-6">
               <div className="text-center mb-6">
                 <h2 className="text-2xl font-bold">MEMBERSHIP APPLICATION</h2>
-                <p className="text-gray-600"></p>
+                {submitStatus === "success" && (
+                  <div className="mt-4 p-3 bg-green-100 text-green-700 rounded">
+                    Application submitted successfully!
+                  </div>
+                )}
+                {submitStatus === "error" && (
+                  <div className="mt-4 p-3 bg-red-100 text-red-700 rounded">
+                    There was an error submitting your application. Please try
+                    again.
+                  </div>
+                )}
               </div>
 
               <form
                 name="membership-application"
                 method="POST"
                 data-netlify="true"
+                onSubmit={handleSubmit}
                 className="space-y-6"
               >
                 <input
@@ -519,9 +550,10 @@ const PDFViewerModal = ({ planName, planPrice }) => {
                 <div className="flex space-x-4">
                   <button
                     type="submit"
-                    className="flex-1 bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition-colors duration-200"
+                    disabled={submitting}
+                    className="flex-1 bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition-colors duration-200 disabled:bg-blue-300"
                   >
-                    Submit Application
+                    {submitting ? "Submitting..." : "Submit Application"}
                   </button>
                   <button
                     type="button"
