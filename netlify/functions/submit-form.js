@@ -48,39 +48,31 @@ export const handler = async (event) => {
 
     // Email to admin
     const adminEmail = {
-      from: "Hub Club Chicago <noreply@hubclubchicago.com>",
+      from: "Hub Club Chicago <info@hubclubchicago.com>",
       to: "victor@hubclubchicago.com",
       subject: `New Membership Application - ${data.name}`,
       template: "admin_notification",
       "h:X-Mailgun-Variables": JSON.stringify({
-        name: data.name,
-        plan: data.plan,
-        email: data.email,
-        phone: data.phone,
-        cell: data.cell,
-        address: data.address,
-        city: data.city,
-        state: data.state,
-        zipCode: data.zipCode,
-        dob: data.dob,
-        maritalStatus: data.maritalStatus,
-        companyName: data.companyName,
-        companyType: data.companyType,
-        companyAddress: data.companyAddress,
-        website: data.website || "Not provided",
-        fein: data.fein,
-        yearsInBusiness: data.yearsInBusiness,
-        federalCertifications: federalCerts,
-        localCertifications: localCerts,
-        businessDescription: data.businessDescription,
-        ueiNumber: data.ueiNumber,
-        cageCode: data.cageCode || "Not provided",
-        naicsCodes:
-          Object.keys(data)
-            .filter((key) => key.startsWith("naicsCode"))
-            .map((key) => data[key])
-            .filter((code) => code)
-            .join(", ") || "None provided",
+        recipient: {
+          name: data.name,
+          address: data.address,
+          city: data.city,
+          state: data.state,
+          zipCode: data.zipCode,
+          dob: data.dob,
+          phone: data.phone,
+          cell: data.cell,
+          maritalStatus: data.maritalStatus,
+          companyName: data.companyName,
+          companyType: data.companyType,
+          companyAddress: data.companyAddress,
+          website: data.website || "Not provided",
+          email: data.email,
+          fein: data.fein,
+          yearsInBusiness: data.yearsInBusiness,
+          federalCertifications: federalCerts,
+          localCertifications: localCerts,
+        },
       }),
     };
 
@@ -91,8 +83,10 @@ export const handler = async (event) => {
       subject: "Thank you for your Hub Club application",
       template: "user_autoresponse",
       "h:X-Mailgun-Variables": JSON.stringify({
-        name: data.name,
-        plan: data.plan,
+        recipient: {
+          name: data.name,
+          plan: data.plan,
+        },
       }),
     };
 
