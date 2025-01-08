@@ -56,26 +56,15 @@ exports.handler = async (event, context) => {
       },
     ],
   };
-
   try {
-    // Send email to admin
+    console.log("Attempting to send admin email...");
     await mg.messages.create(process.env.MAILGUN_DOMAIN, adminEmail);
+    console.log("Admin email sent");
 
-    // Send auto-response to user
+    console.log("Attempting to send user email...");
     await mg.messages.create(process.env.MAILGUN_DOMAIN, userEmail);
-
-    return {
-      statusCode: 200,
-      body: JSON.stringify({ message: "Emails sent successfully" }),
-    };
+    console.log("User email sent");
   } catch (error) {
-    console.error("Error sending email:", error);
-    return {
-      statusCode: 500,
-      body: JSON.stringify({
-        message: "Error sending emails",
-        error: error.message,
-      }),
-    };
+    console.error("Mailgun Error:", error);
   }
 };
