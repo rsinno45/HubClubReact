@@ -6,6 +6,15 @@
     <title>The Hub Club - Find Federal Contracts Today</title>
   </head>
   <body>
+    <!-- A little after the opening body tag, add this hidden form -->
+    <form name="contact" netlify netlify-honeypot="bot-field" hidden>
+      <input type="text" name="name" />
+      <input type="email" name="email" />
+      <input type="tel" name="phone" />
+      <input type="text" name="company" />
+      <textarea name="message"></textarea>
+    </form>
+
     <!-- Hidden form for Netlify -->
     <form name="membership-application" netlify hidden>
       <input type="text" name="name" />
