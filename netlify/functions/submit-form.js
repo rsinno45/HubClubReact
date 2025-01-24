@@ -48,6 +48,12 @@ export const handler = async (event) => {
       ? data.localCertifications.join(", ")
       : data.localCertifications || "None";
 
+    const domain = process.env.MAILGUN_DOMAIN;
+    if (!domain) {
+      throw new Error("MAILGUN_DOMAIN environment variable is not set");
+    }
+
+    // Admin notification email
     const adminEmail = {
       from: "Hub Club Chicago <info@hubclubchicago.com>",
       to: "victor@hubclubchicago.com",
@@ -75,11 +81,7 @@ export const handler = async (event) => {
       }),
     };
 
-    // Read the PDF file - simplified path
-    const pdfPath = path.join(__dirname, "./documents/membership-contract.pdf");
-    const pdfContent = fs.readFileSync(pdfPath);
-
-    // Auto-response to applicant (combined with PDF attachment)
+    // User auto-response email
     const userEmail = {
       from: "Hub Club Chicago <noreply@hubclubchicago.com>",
       to: data.email,
@@ -91,35 +93,53 @@ export const handler = async (event) => {
           plan: data.plan,
         },
       }),
-      attachment: [
+    };
+
+    try {
+      // First, try to read the PDF file
+      const pdfPath = path.join(
+        __dirname,
+        "documents",
+        "membership-contract.pdf"
+      );
+      console.log("Attempting to read PDF from:", pdfPath);
+
+      const pdfContent = fs.readFileSync(pdfPath);
+      console.log("PDF file read successfully");
+
+      // Add attachment to user email if PDF is found
+      userEmail.attachment = [
         {
           data: pdfContent,
           filename: "HUB-Club-Membership-Contract.pdf",
           contentType: "application/pdf",
         },
-      ],
-    };
-
-    const domain = process.env.MAILGUN_DOMAIN;
-    if (!domain) {
-      throw new Error("MAILGUN_DOMAIN environment variable is not set");
+      ];
+    } catch (pdfError) {
+      console.error("PDF Error:", pdfError);
+      // Continue without the PDF if there's an error
     }
 
-    // Send both emails concurrently
+    // Send both emails
+    console.log("Sending emails...");
     await Promise.all([
       mg.messages.create(domain, adminEmail),
       mg.messages.create(domain, userEmail),
     ]);
+    console.log("Emails sent successfully");
 
     return {
       statusCode: 200,
       body: JSON.stringify({ message: "Emails sent successfully" }),
     };
   } catch (error) {
-    console.error("Error:", error);
+    console.error("Function Error:", error);
     return {
       statusCode: 500,
-      body: JSON.stringify({ error: "Error sending emails" }),
+      body: JSON.stringify({
+        error: "Error sending emails",
+        details: error.message,
+      }),
     };
   }
 };
