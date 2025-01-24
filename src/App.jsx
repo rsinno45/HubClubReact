@@ -56,7 +56,7 @@ function App() {
       status: "available",
     },
     {
-      id: "lake-ozarks-mo",
+      id: "lake-of-the-ozarks-mo",
       city: "Lake of Ozarks, MO",
       date: "April 10th 2025",
       image: Ozark,

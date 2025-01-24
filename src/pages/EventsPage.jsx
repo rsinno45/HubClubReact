@@ -19,10 +19,9 @@ import Reno from "../assets/RenoEvents.jpg";
 import Events2025 from "../assets/Chicago-Events-Background.jpg";
 import ".//pages_styling/About.css";
 
-const EventsPage = () => {
-  const [currentSlide, setCurrentSlide] = useState(0);
+const EventsPage = ({ events: propEvents }) => {
+  const [currentIndex, setCurrentIndex] = useState(0);
   const [slidesToShow, setSlidesToShow] = useState(3);
-  const [isTransitioning, setIsTransitioning] = useState(false);
 
   // Update slides to show based on window width
   useEffect(() => {
@@ -41,7 +40,7 @@ const EventsPage = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const events = [
+  const events = propEvents || [
     {
       city: "Baton Rouge, LA",
       date: "March 20th 2025",
@@ -49,7 +48,7 @@ const EventsPage = () => {
       status: "available",
     },
     {
-      city: "Lake of Ozarks, MO",
+      city: "Lake of the Ozarks, MO",
       date: "April 10th 2025",
       image: Ozark,
       status: "available",
@@ -88,8 +87,11 @@ const EventsPage = () => {
 
   const extendedEvents = [...events, ...events, ...events].map((event) => ({
     ...event,
-    // Ensure each event has an id that matches the routes in App.js
-    id: event.city.toLowerCase().replace(/\s+/g, "-").replace(/,/g, ""),
+    id: event.city
+      .toLowerCase()
+      .replace(/\s+of\s+/g, "-of-")
+      .replace(/\s+/g, "-")
+      .replace(/,/g, ""),
   }));
 
   const hotelInfo = [
@@ -99,52 +101,24 @@ const EventsPage = () => {
   ];
 
   const nextSlide = () => {
-    if (isTransitioning) return;
-
-    setIsTransitioning(true);
-    setCurrentSlide((prev) => prev + 1);
-
-    // If we've reached the end of the cloned section, quickly reset to the original section
-    if (currentSlide >= events.length) {
-      setTimeout(() => {
-        setIsTransitioning(false);
-        setCurrentSlide(0);
-      }, 500); // Match this with your transition duration
-    } else {
-      setTimeout(() => setIsTransitioning(false), 500);
-    }
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % events.length);
   };
 
   const prevSlide = () => {
-    if (isTransitioning) return;
-
-    setIsTransitioning(true);
-    setCurrentSlide((prev) => prev - 1);
-
-    // If we've reached the start, quickly reset to the end of the original section
-    if (currentSlide <= 0) {
-      setTimeout(() => {
-        setIsTransitioning(false);
-        setCurrentSlide(events.length - 1);
-      }, 500);
-    } else {
-      setTimeout(() => setIsTransitioning(false), 500);
-    }
-  };
-
-  const getTransformValue = () => {
-    const baseTransform = -(currentSlide * (100 / slidesToShow));
-    return `translateX(${baseTransform}%)`;
+    setCurrentIndex((prevIndex) =>
+      prevIndex === 0 ? events.length - 1 : prevIndex - 1
+    );
   };
 
   const renderEventCard = (event, idx) => (
     <Link
       to={`/events/${event.id}`}
       key={idx}
-      className="w-full"
+      className="w-full px-2"
       style={{ flex: `0 0 ${100 / slidesToShow}%` }}
+      onClick={() => window.scrollTo(0, 0)}
     >
-      <div className="relative h-64 mx-2">
+      <div className="relative h-64">
         <img
           src={event.image}
           alt={event.city}
@@ -252,15 +226,14 @@ const EventsPage = () => {
               </h3>
             </div>
 
-            <div className="relative">
+            <div className="relative max-w-7xl mx-auto">
               <div className="overflow-hidden">
                 <div
-                  className="flex transition-transform duration-500 ease-in-out gap-4"
+                  className="flex transition-transform duration-500 ease-in-out"
                   style={{
-                    transform: getTransformValue(),
-                    transition: isTransitioning
-                      ? "transform 500ms ease-in-out"
-                      : "none",
+                    transform: `translateX(-${
+                      (currentIndex * 100) / slidesToShow
+                    }%)`,
                   }}
                 >
                   {extendedEvents.map((event, idx) =>

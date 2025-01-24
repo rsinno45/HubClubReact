@@ -10,22 +10,18 @@ const TestimonialCarousel = () => {
     {
       text: "The HUB Club has provided me with all the technical services and the process to win contracts. I wish I joined The HUB Club 15 years ago!",
       author: "Mike G.",
-      image: Mike,
     },
     {
       text: "Learning about federal contracting is very difficult and seems insurmountable, but thanks to The HUB Club, I am able to master photo contracting and be successful!",
       author: "Amer S.",
-      image: Amer,
     },
     {
       text: "Everything I learned to be successful with federal contracting is all due to The HUB Club. The strategies employed by The HUB Club are top notch!",
       author: "Charles J.",
-      image: Charles,
     },
     {
       text: "I have been trying to get  my business up and running and to be profitable for the past four years and then I joined The HUB Club. I am operating with a new attitude, and my company is successful in securing federal contracts. Thank you, The HUB Club!",
       author: "Christian S.",
-      image: Christian,
     },
   ];
 
@@ -72,13 +68,6 @@ const TestimonialCarousel = () => {
                     key={idx}
                     className="w-full flex-shrink-0 flex flex-col items-center text-center px-4"
                   >
-                    <div className="w-32 h-32 mb-8 rounded-full overflow-hidden bg-gray-200">
-                      <img
-                        src={testimonial.image}
-                        alt={`${testimonial.author}'s profile`}
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
                     <blockquote className="text-xl md:text-2xl text-gray-800 mb-6 max-w-3xl mx-auto">
                       "{testimonial.text}"
                     </blockquote>
