@@ -12,6 +12,8 @@ import ContactPage from "./pages/ContactPage";
 import MembershipPage from "./pages/MembershipPage";
 import EventsPage from "./pages/EventsPage";
 import EventDetailPage from "./pages/EventDetailPage";
+import PaymentSelection from "./pages/PaymentSelection";
+import Layout from "./components/Layout";
 
 // Import all event images
 import Huntsville from "./assets/huntsville.jpg";
@@ -102,19 +104,24 @@ function App() {
   return (
     <Router>
       <div className="app">
-        <Navbar />
         <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/contact" element={<ContactPage />} />
-          <Route path="/membership" element={<MembershipPage />} />
-          <Route path="/events" element={<EventsPage events={events} />} />
-          {events.map((event) => (
-            <Route
-              key={event.id}
-              path={`/events/${event.id}`}
-              element={<EventDetailPage eventData={event} />}
-            />
-          ))}
+          {/* Routes with navbar */}
+          <Route element={<Layout />}>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/contact" element={<ContactPage />} />
+            <Route path="/membership" element={<MembershipPage />} />
+            <Route path="/events" element={<EventsPage events={events} />} />
+            {events.map((event) => (
+              <Route
+                key={event.id}
+                path={`/events/${event.id}`}
+                element={<EventDetailPage eventData={event} />}
+              />
+            ))}
+          </Route>
+
+          {/* Routes without navbar */}
+          <Route path="/payment" element={<PaymentSelection />} />
         </Routes>
         <Footer />
       </div>
