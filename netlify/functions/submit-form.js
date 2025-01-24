@@ -39,14 +39,27 @@ export const handler = async (event) => {
       };
     }
 
-    // Format certifications for email
+    // Format NAICS codes
+    const naicsCodes = [];
+    for (let i = 1; i <= 9; i++) {
+      if (data[`naicsCode${i}`]) {
+        naicsCodes.push(data[`naicsCode${i}`]);
+      }
+    }
+    const formattedNaicsCodes = naicsCodes.filter(Boolean).join(", ") || "None";
+
+    // Format certifications - ensure we handle arrays properly
     const federalCerts = Array.isArray(data.federalCertifications)
       ? data.federalCertifications.join(", ")
-      : data.federalCertifications || "None";
+      : typeof data.federalCertifications === "string"
+      ? data.federalCertifications
+      : "None";
 
     const localCerts = Array.isArray(data.localCertifications)
       ? data.localCertifications.join(", ")
-      : data.localCertifications || "None";
+      : typeof data.localCertifications === "string"
+      ? data.localCertifications
+      : "None";
 
     const domain = process.env.MAILGUN_DOMAIN;
     if (!domain) {
@@ -78,6 +91,7 @@ export const handler = async (event) => {
         yearsInBusiness: data.yearsInBusiness,
         federalCertifications: federalCerts,
         localCertifications: localCerts,
+        naicsCodes: formattedNaicsCodes,
       }),
     };
 
