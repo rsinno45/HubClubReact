@@ -14,6 +14,7 @@ import EventsPage from "./pages/EventsPage";
 import EventDetailPage from "./pages/EventDetailPage";
 import PaymentSelection from "./pages/PaymentSelection";
 import Layout from "./components/Layout";
+import ContractDownload from "./pages/ContractDownload";
 
 // Import all event images
 import Huntsville from "./assets/huntsville.jpg";
@@ -122,6 +123,7 @@ function App() {
 
           {/* Routes without navbar */}
           <Route path="/payment" element={<PaymentSelection />} />
+          <Route path="/contract" element={<ContractDownload />} />
         </Routes>
         <Footer />
       </div>
