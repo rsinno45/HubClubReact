@@ -224,9 +224,13 @@ const EventsPage = () => {
                 business in contract with the right Agency or Subagency has
                 never been easier.
               </p>
-              <button className="bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 transition-colors duration-200">
+              <Link
+                to="/membership"
+                className="bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 transition-colors duration-200 no-underline inline-block"
+                onClick={() => window.scrollTo(0, 0)}
+              >
                 Join the HUB Club Now
-              </button>
+              </Link>
             </div>
             <div>
               <img
