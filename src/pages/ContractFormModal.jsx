@@ -8,6 +8,7 @@ const PDFViewerModal = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
+  const [selectedPlan, setSelectedPlan] = useState(null);
 
   const plans = [
     {
@@ -60,6 +61,8 @@ const PDFViewerModal = () => {
 
     // Get form data
     const formData = new FormData(e.target);
+    const selectedPlanName = formData.get("plan");
+    setSelectedPlan(plans.find((plan) => plan.name === selectedPlanName));
 
     try {
       // Submit to Netlify Forms
@@ -81,8 +84,6 @@ const PDFViewerModal = () => {
       if (!functionResponse.ok) throw new Error("Email sending failed");
 
       setSubmitStatus("success");
-      e.target.reset();
-      setTimeout(() => setIsOpen(false), 2000);
     } catch (error) {
       console.error("Submission error:", error);
       setSubmitStatus("error");
@@ -116,8 +117,20 @@ const PDFViewerModal = () => {
               <div className="text-center mb-6">
                 <h2 className="text-2xl font-bold">MEMBERSHIP APPLICATION</h2>
                 {submitStatus === "success" && (
-                  <div className="mt-4 p-3 bg-green-100 text-green-700 rounded">
-                    Application submitted successfully!
+                  <div className="mt-4 space-y-4">
+                    <div className="p-3 bg-green-100 text-green-700 rounded">
+                      Application submitted successfully!
+                    </div>
+                    {selectedPlan && (
+                      <a
+                        href={selectedPlan.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block w-full bg-green-600 text-white py-2 px-4 rounded hover:bg-green-700 transition-colors duration-200 text-center"
+                      >
+                        Proceed to Payment
+                      </a>
+                    )}
                   </div>
                 )}
                 {submitStatus === "error" && (
