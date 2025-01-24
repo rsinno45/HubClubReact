@@ -1,6 +1,8 @@
 // netlify/functions/submit-form.js
 import formData from "form-data";
 import Mailgun from "mailgun.js";
+import fs from "fs";
+import path from "path";
 
 const mailgun = new Mailgun(formData);
 const mg = mailgun.client({
@@ -73,7 +75,11 @@ export const handler = async (event) => {
       }),
     };
 
-    // Auto-response to applicant
+    // Read the PDF file - simplified path
+    const pdfPath = path.join(__dirname, "./documents/membership-contract.pdf");
+    const pdfContent = fs.readFileSync(pdfPath);
+
+    // Auto-response to applicant (combined with PDF attachment)
     const userEmail = {
       from: "Hub Club Chicago <noreply@hubclubchicago.com>",
       to: data.email,
@@ -85,6 +91,13 @@ export const handler = async (event) => {
           plan: data.plan,
         },
       }),
+      attachment: [
+        {
+          data: pdfContent,
+          filename: "HUB-Club-Membership-Contract.pdf",
+          contentType: "application/pdf",
+        },
+      ],
     };
 
     const domain = process.env.MAILGUN_DOMAIN;
