@@ -104,19 +104,30 @@ export const handler = async (event) => {
       );
       console.log("Attempting to read PDF from:", pdfPath);
 
+      // Check if file exists before reading
+      if (!fs.existsSync(pdfPath)) {
+        throw new Error(`PDF file not found at path: ${pdfPath}`);
+      }
+
       const pdfContent = fs.readFileSync(pdfPath);
-      console.log("PDF file read successfully");
+      console.log(
+        "PDF file read successfully, size:",
+        pdfContent.length,
+        "bytes"
+      );
 
       // Add attachment to user email if PDF is found
       userEmail.attachment = [
         {
           data: pdfContent,
-          filename: "HUB-Club-Membership-Contract.pdf",
+          filename: "membership-contract.pdf",
           contentType: "application/pdf",
         },
       ];
+      console.log("PDF attachment added to email");
     } catch (pdfError) {
-      console.error("PDF Error:", pdfError);
+      console.error("PDF Error:", pdfError.message);
+      console.error("PDF Error Stack:", pdfError.stack);
       // Continue without the PDF if there's an error
     }
 
