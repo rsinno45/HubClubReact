@@ -11,40 +11,49 @@ import SE from "../assets/SE.jpg";
 import Acq from "../assets/Acq.jpg";
 import Simple from "../assets/Simple.jpg";
 import Membership from "../assets/Membership.jpg";
+import FedGoals from "../pages/ContractingInfoDocs/FedGoals-2025.pdf";
+import FARs from "../pages/ContractingInfoDocs/FAR.pdf";
+import FAQs from "../pages/ContractingInfoDocs/HUB Club™ FAQs.pdf";
+import Benefits from "../pages/ContractingInfoDocs/FY 24-25 - HUB Club Membership Benefits.pdf";
+import MostWanted from "../pages/ContractingInfoDocs/Most wanted NAICS Codes FY 22-23.pdf";
+import SocioEco from "../pages/ContractingInfoDocs/Document 7 - SBA Programs FY 23-24.pdf";
+import Ac from "../pages/ContractingInfoDocs/Acq Chart.pdf";
+import AcqSimple from "../pages/ContractingInfoDocs/Acq Simplified.pdf";
+import MemberCode from "../pages/ContractingInfoDocs/HUB Club NAICS Codes FY23-24.pdf";
 
 const resources = [
   {
     title: "Federal Goals",
     description: "Key federal contracting goals and objectives for businesses",
-    href: "#",
+    href: FedGoals,
     imageSrc: FedGoal,
     alt: "Federal Goals Image",
   },
   {
     title: "Federal Acquisition Regulations",
     description: "Understanding federal acquisition policies and procedures",
-    href: "#",
+    href: FARs,
     imageSrc: FAR,
     alt: "Federal Acquisition Regulations Image",
   },
   {
     title: "FAQs",
     description: "Common questions about government contracting processes",
-    href: "#",
+    href: FAQs,
     imageSrc: FAQ,
     alt: "FAQs Image",
   },
   {
     title: "HUB Club Benefits",
     description: "Exclusive benefits available to HUB Club members",
-    href: "#",
+    href: Benefits,
     imageSrc: Benefit,
     alt: "HUB Club Benefits Image",
   },
   {
     title: "Most Wanted NAICS Codes",
     description: "Essential NAICS codes for government contractors",
-    href: "#",
+    href: MostWanted,
     imageSrc: WantedCodes,
     alt: "NAICS Codes Image",
   },
@@ -52,28 +61,28 @@ const resources = [
     title: "Socio-economic Designations",
     description:
       "Understanding various socio-economic categories and certifications",
-    href: "#",
+    href: SocioEco,
     imageSrc: SE,
     alt: "Socio-economic Designations Image",
   },
   {
     title: "Acquisitions Reality Chart",
     description: "Real-world visualization of the acquisition process",
-    href: "#",
+    href: Ac,
     imageSrc: Acq,
     alt: "Acquisitions Chart Image",
   },
   {
     title: "Acquisitions Simplified",
     description: "Streamlined guide to government acquisitions",
-    href: "#",
+    href: AcqSimple,
     imageSrc: Simple,
     alt: "Acquisitions Simplified Image",
   },
   {
     title: "HUB Club Membership NAICS Codes",
     description: "Specialized NAICS codes for HUB Club members",
-    href: "#",
+    href: MemberCode,
     imageSrc: Membership,
     alt: "HUB Club NAICS Codes Image",
   },
