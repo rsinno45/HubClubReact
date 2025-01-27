@@ -2,11 +2,11 @@ import React from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { ExternalLink, ChevronLeft, ChevronRight } from "lucide-react";
-import DSBS from "/assets/DSBS.jpg";
-import Register from "/assets/Register.jpg";
-import GovBuysPic from "/assets/GovBuys.jpg";
-import hubZoneCheck from "/assets/hubZoneCheck.jpg";
-import FedProData from "/assets/FedProData.jpg";
+import DSBS from "/assets/DSBS.webp";
+import Register from "/assets/Register.webp";
+import GovBuysPic from "/assets/GovBuys.webp";
+import hubZoneCheck from "/assets/hubZoneCheck.webp";
+import FedProData from "/assets/FedProData.webp";
 
 const resources = [
   {

@@ -17,16 +17,16 @@ import Layout from "./components/Layout";
 import ContractDownload from "./pages/ContractDownload";
 
 // Import all event images
-import Huntsville from "/assets/huntsville.jpg";
-import Tampa from "/assets/tampa.jpg";
-import DC from "/assets/DCEvents.jpg";
-import Baton from "/assets/batonLA.jpeg";
-import Ozark from "/assets/ozarks.jpg";
-import Topeka from "/assets/topeka.jpg";
-import RIA from "/assets/RIA.jpeg";
-import FrenchLick from "/assets/frenchLick.jpeg";
-import NewHaven from "/assets/NewHaven.jpeg";
-import Reno from "/assets/RenoEvents.jpg";
+import Huntsville from "/assets/huntsville.webp";
+import Tampa from "/assets/tampa.webp";
+import DC from "/assets/DCEvents.webp";
+import Baton from "/assets/batonLA.webp";
+import Ozark from "/assets/ozarks.webp";
+import Topeka from "/assets/topeka.webp";
+import RIA from "/assets/RIA.webp";
+import FrenchLick from "/assets/frenchLick.webp";
+import NewHaven from "/assets/NewHaven.webp";
+import Reno from "/assets/RenoEvents.webp";
 
 function App() {
   const events = [

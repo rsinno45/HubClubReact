@@ -8,15 +8,15 @@ import {
   ChevronLeft,
   ChevronRight,
 } from "lucide-react";
-import Events from "/assets/Events.jpg";
-import Baton from "/assets/batonLA.jpeg";
-import Ozark from "/assets/ozarks.jpg";
-import Topeka from "/assets/topeka.jpg";
-import RIA from "/assets/RIA.jpeg";
-import FrenchLick from "/assets/frenchLick.jpeg";
-import NewHaven from "/assets/NewHaven.jpeg";
-import Reno from "/assets/RenoEvents.jpg";
-import Events2025 from "/assets/Chicago-Events-Background.jpg";
+import Events from "/assets/Events.webp";
+import Baton from "/assets/batonLA.webp";
+import Ozark from "/assets/ozarks.webp";
+import Topeka from "/assets/topeka.webp";
+import RIA from "/assets/RIA.webp";
+import FrenchLick from "/assets/frenchLick.webp";
+import NewHaven from "/assets/NewHaven.webp";
+import Reno from "/assets/RenoEvents.webp";
+import Events2025 from "/assets/Chicago-Events-Background.webp";
 import ".//pages_styling/About.css";
 
 const EventsPage = ({ events: propEvents }) => {

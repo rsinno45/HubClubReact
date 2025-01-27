@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import "./pages_styling/About.css";
-import HubClub1 from "/assets/hubAbout1.jpg";
-import HubClub2 from "/assets/hubAbout2.jpg";
+import HubClub1 from "/assets/hubAbout1.webp";
+import HubClub2 from "/assets/hubAbout2.webp";
 
 const AboutSection = () => {
   const sectionRef = useRef(null);
