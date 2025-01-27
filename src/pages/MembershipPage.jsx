@@ -401,14 +401,7 @@ const MembershipPage = () => {
                   >
                     {expandedTier === plan.name ? "Show Less" : "View Details"}
                   </button>
-                  <a
-                    href={plan.link}
-                    target="_blank"
-                    style={{ textDecoration: "none" }}
-                    className="w-full bg-blue-600 text-white py-2 rounded-lg text-center font-semibold hover:bg-blue-700 transition-colors duration-200 shadow-md"
-                  >
-                    Join Now!
-                  </a>
+                  <PDFViewerModal />
                 </div>
               </div>
               {expandedTier === plan.name && (
