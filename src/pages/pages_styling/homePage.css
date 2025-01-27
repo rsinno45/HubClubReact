@@ -5,7 +5,7 @@
   position: relative;
   width: 100%;
   height: 100vh;
-  background-image: url("/src/assets/hubClubHome.png");
+  background-image: url("../hubClubHome.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
