@@ -1,7 +1,7 @@
 import React from "react";
 import "./Footer.css";
-import Logo from "../assets/hub-club-logo.png/";
-import SBA from "../assets/SBALogosFooter.png";
+import Logo from "/assets/hub-club-logo.png";
+import SBA from "/assets/SBALogosFooter.png";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();

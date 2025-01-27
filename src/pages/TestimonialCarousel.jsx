@@ -1,9 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
-import Mike from "../assets/MikeImg.jpg";
-import Amer from "../assets/AmerImg.jpg";
-import Christian from "../assets/ChristianImg.jpg";
-import Charles from "../assets/CharlesImg.jpg";
 
 const TestimonialCarousel = () => {
   const testimonials = [

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./Navbar.css";
-import Logo from "../assets/hub-club-logo.png";
+import Logo from "/assets/hub-club-logo.png";
 import { Link } from "react-scroll";
 import { useLocation } from "react-router-dom";
 
