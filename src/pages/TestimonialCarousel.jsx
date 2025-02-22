@@ -8,7 +8,7 @@ const TestimonialCarousel = () => {
       author: "Mike G.",
     },
     {
-      text: "Learning about federal contracting is very difficult and seems insurmountable, but thanks to The HUB Club, I am able to master photo contracting and be successful!",
+      text: "Learning about federal contracting is very difficult and seems insurmountable, but thanks to The HUB Club, I am able to master contracting and be successful!",
       author: "Amer S.",
     },
     {
@@ -44,7 +44,7 @@ const TestimonialCarousel = () => {
   return (
     <div className="w-full bg-white py-16">
       <div className="max-w-6xl mx-auto px-4">
-        <h2 className="text-4xl font-bold text-center mb-16">
+        <h2 className="text-5xl font-bold text-center mb-16">
           What Our Members Say
         </h2>
 

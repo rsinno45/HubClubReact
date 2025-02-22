@@ -27,48 +27,47 @@ import RIA from "/assets/RIA.webp";
 import FrenchLick from "/assets/frenchLick.webp";
 import NewHaven from "/assets/NewHaven.webp";
 import Reno from "/assets/RenoEvents.webp";
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
+
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0; // For Safari
+  }, [pathname]);
+
+  return null;
+}
 
 function App() {
   const events = [
     {
-      id: "huntsville-al",
-      city: "Huntsville, AL",
-      date: "January 15th 2025",
-      image: Huntsville,
-      status: "sold out",
-    },
-    {
-      id: "tampa-fl",
-      city: "Tampa, FL",
-      date: "February 1st 2025",
-      image: Tampa,
-      status: "sold out",
-    },
-    {
       id: "washington-dc",
       city: "Washington, DC",
-      date: "February 29th 2025",
+      date: "Postponed Due to Federal Cutbacks - New Date TBD",
       image: DC,
       status: "available",
     },
     {
       id: "baton-rouge-la",
       city: "Baton Rouge, LA",
-      date: "March 20th 2025",
+      date: "Postponed Due to Federal Cutbacks - New Date TBD",
       image: Baton,
       status: "available",
     },
     {
       id: "lake-of-the-ozarks-mo",
       city: "Lake of Ozarks, MO",
-      date: "April 10th 2025",
+      date: "Postponed Due to Federal Cutbacks - New Date TBD",
       image: Ozark,
       status: "available",
     },
     {
       id: "topeka-ks",
       city: "Topeka, KS",
-      date: "May 15th 2025",
+      date: "Date Changed to June TBD",
       image: Topeka,
       status: "available",
     },
@@ -104,6 +103,7 @@ function App() {
 
   return (
     <Router>
+      <ScrollToTop />
       <div className="app">
         <Routes>
           {/* Routes with navbar */}

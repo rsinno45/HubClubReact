@@ -14,7 +14,7 @@ const Footer = () => {
             {/* Left Column */}
             <div className="footer-column company-info">
               <h4 className="footer-title">THE HUB CLUB™ is:</h4>
-              <div className=" grid-cols-1 gap-x-2 gap-y-1 text-sm">
+              <div className="grid-cols-1 gap-x-2 gap-y-1 text-sm">
                 <p>HUBZone Certified</p>
                 <p>Small Disadvantaged Business</p>
                 <p>F.A.R Certified</p>
@@ -112,7 +112,7 @@ const Footer = () => {
         </div>
       </div>
 
-      <div className="footer-copyright mt-4 border-t border-gray-200 pt-4">
+      <div className="footer-copyright mt-4">
         <div className="container-fluid">
           <div className="flex items-center justify-between">
             <p>

@@ -96,7 +96,7 @@ const EventsPage = ({ events: propEvents }) => {
 
   const hotelInfo = [
     "Hotel registrations will be available 60 days prior to event and will be open for 45 days.",
-    "Hotel accommodations and airfare will be available at a discount for HUB Club Members only 60 days prior to the GLC Meetings.",
+    "",
     "Airline bookings will be available up to 30 days prior to event.",
   ];
 
@@ -167,10 +167,10 @@ const EventsPage = ({ events: propEvents }) => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Hero Section */}
           <div className="text-center mb-16">
-            <h3 className="text-blue-600 text-sm font-semibold tracking-wide uppercase mb-3">
+            <h3 className="text-blue-600 text-4xl font-semibold tracking-wide uppercase mb-3">
               GLC Meetings
             </h3>
-            <h2 className="text-4xl font-bold text-gray-900 sm:text-5xl mb-4">
+            <h2 className="text-4xl font-bold text-gray-900 sm:text-6xl mb-4">
               Take the Plunge with The HUB Club!
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
@@ -195,8 +195,8 @@ const EventsPage = ({ events: propEvents }) => {
               <p className="text-gray-600">
                 Since 2003, The HUB Club has worked with over 900 small
                 businesses. With over 20 years of experience, getting your
-                business in contract with the right Agency or Subagency has
-                never been easier.
+                business in contact with the right Agency or Subagency has never
+                been easier.
               </p>
               <Link
                 to="/membership"

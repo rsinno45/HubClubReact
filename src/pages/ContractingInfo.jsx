@@ -7,6 +7,7 @@ import Register from "/assets/Register.webp";
 import GovBuysPic from "/assets/GovBuys.webp";
 import hubZoneCheck from "/assets/hubZoneCheck.webp";
 import FedProData from "/assets/FedProData.webp";
+import FedBuys from "./PDF/Document 10 - Table of Size Standards  FY 23-24.pdf";
 
 const resources = [
   {
@@ -33,7 +34,7 @@ const resources = [
   {
     title: "Everything Government Buys",
     description: "Comprehensive guide to government procurement",
-    href: "#",
+    href: FedBuys,
     imageSrc: GovBuysPic,
     alt: "Government Procurement Guide",
   },

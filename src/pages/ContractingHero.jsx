@@ -41,13 +41,12 @@ const ContractingHero = () => {
                 endorsed by any federal agency.
               </p>
 
-              <Link
-                to="/contact"
+              <a
+                href="/contact"
                 className="inline-block no-underline bg-blue-500 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-600 transition-colors duration-200"
-                onClick={() => window.scrollTo(0, 0)}
               >
                 Learn More!
-              </Link>
+              </a>
             </div>
           </div>
         </div>
